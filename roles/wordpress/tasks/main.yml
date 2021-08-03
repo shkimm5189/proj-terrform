@@ -1,0 +1,39 @@
+---
+# tasks file for wordpress
+- name: Include OS vars
+  include_vars: "{{  ansible_os_family  }}.yaml"
+
+- name: Download wordpress tar
+  get_url:
+    url: "{{  wp['download_url']  }}"
+    checksum: "{{  wp['checksum']  }}"
+    dest: "{{ wp['home_dir'] }}"
+  async: 300
+  poll: 0
+  register: download_tar
+
+
+- import_tasks: Debian.yaml
+  when: ansible_facts['os_family'] == 'Debian'
+- name: Install wordpress dependency pakages
+  apt:
+    name: "{{  wp_dependency_pakage  }}"
+- name: Wait for download to end
+  async_status:
+    jid: "{{  download_tar.ansible_job_id   }}"
+  register: job_result
+  until: job_result.finished
+  retries: 10
+  delay: 5
+
+- name: Unarchive wordpress 
+  unarchive:
+    src: "{{  wp['archive_path']  }}"
+    dest: /var/www/html
+    remote_src: true
+- name: Set wordpress wp-config
+  template: 
+    src: "{{  wp_config_template  }}"
+    dest: "{{  wp['config_file_path']  }}"
+
+

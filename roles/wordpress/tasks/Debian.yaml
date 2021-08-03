@@ -1,0 +1,13 @@
+---
+- name: Update apt cache and install dependency
+  apt:
+    name: "{{  debian_http_name }}"
+    update_cache: yes
+    state: present
+
+- name: Change apache port 
+  template:
+    src: "{{  apache2_config_template  }}"
+    dest: "{{  apache['config_file_path']  }}"
+  notify:
+    - Restart apache 

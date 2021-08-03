@@ -1,0 +1,8 @@
+---
+# The name of wordpress MySQL on Debian
+mysql_pakage_name: "python3-pymysql, mysql-server"
+
+
+mysql_cnf: "mysqld.cnf.j2"
+mysql_cnf_path: /etc/mysql/mysql.conf.d/mysqld.cnf
+

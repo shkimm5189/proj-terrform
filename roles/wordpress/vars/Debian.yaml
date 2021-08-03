@@ -1,0 +1,20 @@
+wp:
+  home_dir: "/home/devops"
+  version: "5.8"
+  download_url:  "https://ko.wordpress.org/wordpress-5.8-ko_KR.tar.gz"
+  config_file_path: "/var/www/html/wordpress/wp-config.php"
+  checksum: sha1:151d0c3b1f643516a1cdee2cc35ed9eceaa312c0
+  archive_path: "/home/devops/wordpress-5.8-ko_KR.tar.gz"  
+apache: 
+  port: 11000
+  config_file_path: "/etc/apache2/port.conf"
+
+mysql:
+  socket:  /var/run/mysqld/mysqld.sock
+  db: "wordpress"
+  user: "funny"
+  password: "ansible"
+  host: "192.168.200.67"
+
+
+

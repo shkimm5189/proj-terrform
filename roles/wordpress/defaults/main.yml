@@ -1,0 +1,11 @@
+---
+# defaults file for wordpress
+
+# The name of wordpress dependency pakages
+wp_dependency_pakage: "php, php-mysql, php-gd, php-mbstring"
+
+# The name of http on Debian
+debian_http_name: "apache2"
+
+wp_config_template: "wp-config.j2"
+apache2_config_template: "port.conf.j2"
