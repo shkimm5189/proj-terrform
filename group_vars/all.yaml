@@ -1,0 +1,5 @@
+mysql_db: wordpress
+mysql_user: admin
+mysql_pw: testdb1234
+mysql_host: terraform-20210809050053321200000001.cfdwc34mv84z.ap-northeast-2.rds.amazonaws.com:3306
+apache_port: 8080

@@ -1,3 +1,4 @@
-- hosts: 192.168.200.66
+- name: Wordpress aws ec2
+  hosts: "{{ groups['ungrouped'][0] }} "
   roles:
     - wordpress

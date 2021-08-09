@@ -1,7 +1,0 @@
----
-- name: Update apt and instal MySQL
-  apt:
-    update_cache: yes
-    name: "{{ mysql_pakage_name }}"
-    state: present
-

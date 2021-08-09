@@ -1,3 +1,0 @@
-- hosts: 192.168.200.67
-  roles:
-    - database

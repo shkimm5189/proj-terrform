@@ -1,20 +1,17 @@
 ---
-# tasks file for wordpress
-- name: Include OS vars
-  include_vars: "{{  ansible_os_family  }}.yaml"
-
 - name: Download wordpress tar
   get_url:
     url: "{{  wp['download_url']  }}"
     checksum: "{{  wp['checksum']  }}"
-    dest: "{{ wp['home_dir'] }}"
+    dest: "/home/ubuntu"
   async: 300
   poll: 0
   register: download_tar
 
-
-- import_tasks: Debian.yaml
+- name: import debian os
+  import_tasks: Debian.yaml
   when: ansible_facts['os_family'] == 'Debian'
+
 - name: Install wordpress dependency pakages
   apt:
     name: "{{  wp_dependency_pakage  }}"
@@ -31,6 +28,7 @@
     src: "{{  wp['archive_path']  }}"
     dest: /var/www/html
     remote_src: true
+
 - name: Set wordpress wp-config
   template: 
     src: "{{  wp_config_template  }}"

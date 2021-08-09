@@ -1,7 +1,0 @@
-mysql:
-  socket:  /var/run/mysqld/mysqld.sock
-  db: "wordpress"
-  user: "funny"
-  password: "ansible"
-
-

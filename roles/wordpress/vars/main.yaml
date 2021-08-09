@@ -1,0 +1,19 @@
+
+version: 5.8
+wp:
+  download_url:  "https://ko.wordpress.org/wordpress-{{ version }}-ko_KR.tar.gz"
+  config_file_path: "/var/www/html/wordpress/wp-config.php"
+  checksum: sha1:151d0c3b1f643516a1cdee2cc35ed9eceaa312c0
+  archive_path: "/home/ubuntu/wordpress-5.8-ko_KR.tar.gz"  
+apache: 
+  port: "{{ apache_port }}"
+  config_file_path: "/etc/apache2/ports.conf"
+
+mysql:
+  db: "{{  mysql_db  }}"
+  user: "{{  mysql_user  }}" 
+  password: "{{  mysql_pw  }}"
+  host: "{{  mysql_host  }}"
+
+
+
